@@ -1,20 +1,34 @@
 package calculator;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class StringCalculatorShould {
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
 
-    @Test
-    void empty_string_should_return_0() {
-        StringCalculator stringCalculator = new StringCalculator();
-        assertEquals(0, stringCalculator.add(""));
+
+public class StringCalculatorShould {
+	
+	
+	private StringCalculator stringCalculator;
+	
+	@Before
+	public void init() {
+	stringCalculator=new StringCalculator() ;
+	}
+
+	@Test
+   public void empty_string_should_return_0() {
+       
+        assertEquals(0,stringCalculator.add(""));
     }
 
-    @Test
+  @Test
     void string_with_single_number_should_return_number_as_int() {
-        StringCalculator stringCalculator = new StringCalculator();
-        assertEquals(1, stringCalculator.add("1"));
+       
+        assertEquals(1,stringCalculator.add("1"));
     }
+  @Test
+  public void twoNumbersCommaDelimitedReturnSum() {
+	  assertEquals(stringCalculator.add("1,2"), 3);
+  }
 }
