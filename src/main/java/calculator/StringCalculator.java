@@ -17,6 +17,17 @@ class StringCalculator {
 	                                text.split(",|\n") : text.split("\n|" + customDelimiter);
 	        int total = 0;
 	        int skipFirstLines = (customDelimiter == ',') ? 0 : 2;
+		    for (String item : chuncks) {
+            if (skipFirstLines > 0) {
+                --skipFirstLines;
+            } else {
+                int num = Integer.parseInt(item);
+                if (num < 0) {
+                    negatives.add(item);
+                }
+                total += num;
+            }
+        }
 	        
 	        if (!negatives.isEmpty()) {
 	            throw new IllegalArgumentException(
